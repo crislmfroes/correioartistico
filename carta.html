@@ -148,9 +148,7 @@
 				<nav id="menu" style="display: none;" onmouseover="mostra()" onmouseout="oculta()">
 					<ul>
 						<li><a href="index.html"> HOME </a></li>
-						<li><a href="cadastro.html"> CADASTRO </a></li>
 						<li><a href="carta.html"> CARTA </a></li>
-						<li><a href="merda.html"> TROLLEI </a></li>
 					</ul>
 				</nav>
 			</header>
@@ -226,9 +224,34 @@
 			</form>
 		</div>
 		<script>
+			var nome = document.getElementById('option');
+			var par = ""; // resultado da carta 
+
 			function revel_match(){
-				var nome = document.getElementById('option');
-				document.write(nome);
+				document.write(par);
+			}
+			var rdm_turmaC = Math.floor(Math.random()*23);
+			var rdm_turmaD = Math.floor(Math.random()*28);
+
+
+			class Alunos {
+				constructor(nome,turma,matricula,carta,rua,num_comp,bairro,cep,loc_foto) {
+					this.nome = nome;
+					this.turma = turma;
+					this.matricula = matricula;
+					this.carta = carta;
+					this.rua = rua;
+					this.num_comp = num_comp;
+					this.bairro = bairro;
+					this.cep = cep;
+					this.loc_foto = loc_foto;
+				}
+			}
+
+			var aluno = new Alunos(document.getELementbyid('nome'));
+
+			if(nome){
+
 			}
 
 		</script>
