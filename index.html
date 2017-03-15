@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<link rel="icon" href="icone.png">
+		<title>
+			Correio Artístico 
+		</title>
+
+		<meta charset="UTF-8">
+
+		<style rel="stylesheet">
+
+			body { 
+				background-image: url(a.jpg);
+				background-position: center; 
+			}
+
+		</style>
+
+	</head>
+
+	<style>
+
+		.btn-menu {
+			-webkit-border-radius: 0;
+			-moz-border-radius: 0;
+			border-radius: 0;
+			border: 0;
+			font-family: Arial;
+			color: #ff00ea;
+			font-size: 23px;
+			padding: 11.5px;
+			margin: -4px;
+			background: #381c42;
+			text-decoration: none;
+			transition: background-color 0.3s;
+			cursor: pointer;
+			position: relative;
+			left: 4px;
+		}
+
+		.btn-menu:hover {
+		  background: #4e1b54;
+		  text-decoration: none;
+		}
+
+		.alinharTexto {
+			width: 600px;
+		}
+
+		.alinharFoto {
+			top: -265px;
+			float: right;
+			right: 20px;
+			position: relative;
+		}
+
+		div#interface {
+			width:1280px;
+			height:1000px;
+			background-color: rgba(255,255,255,.5);
+			margin: 20px auto 10px auto;
+			box-shadow: 0px 0px 20px black;
+			padding: 10px; 
+		}
+
+		div#home {
+			font-size: 19px;
+			font-style: none;
+			text-align: justify;
+		}
+
+		nav#menu {
+			display: block;
+		}
+
+		nav#menu ul {
+			list-style: none;
+			position: relative;
+			top: -27px;
+			text-align: left;
+			left: -36px;
+		}
+
+		nav#menu li {
+			display: inline-block;
+			background-color: #381c42;
+			padding: 11.9px;
+			margin: -4px;
+			transition: background-color 0.3s;
+		}
+
+		nav#menu li:hover {
+			background-color: #4e1b54;
+		}
+
+		nav#menu a {
+			color: #ff00ea;
+			text-decoration: none;
+		}
+
+		nav#menu a:hover {
+			color: #dcb9d9;
+			transition: color 0.3s;
+		}
+
+		header#cabecalho {
+			border-bottom: 1px #606060 solid;
+			height: 200px;
+
+		}
+
+		body {
+			font-family: sans-serif;
+			font-size: 18pt;
+			text-align: justify;
+		}
+
+		p {
+			height: 15px;
+		}
+
+
+	</style>
+
+	<body>	
+
+		<script type="text/javascript">
+	      function mostra() {
+	        var menu = document.querySelector('nav');
+	        menu.style.display = 'block';
+	      } 
+	      function oculta() {
+	        var menu = document.querySelector('nav');
+	        menu.style.display = 'none';
+	      }
+	    </script>
+	  
+		<div id="interface">
+
+			<header id="cabecalho"  style="border-style: none;"> 
+				<img src="logo.jpg"/>
+
+				<button class="btn-menu" onmouseover="mostra()" onmouseout="oculta()">≡</button>
+
+				<nav id="menu" style="display: none;" onmouseover="mostra()" onmouseout="oculta()">
+					<ul>
+						<li><a href="index.html"> HOME </a></li>
+						<li><a href="cadastro.html"> CADASTRO </a></li>
+						<li><a href="carta.html"> CARTA </a></li>
+						<li><a href="merda.html"> TROLLEI </a></li>
+					</ul>
+				</nav>
+			</header>
+
+			<div class="alinharTexto" id="home">
+				<p>	
+				<br>
+				<div style="text-indent: 60px;"> Os alunos das turmas 2C e 2D do IFRS Campus Rio Grande, coordenados pela Profª Viviani Kwecko, realizarão entre si a troca de fotografias tiradas a fim de que expressassem as concepções de cada um sobre arte e ciência partindo de um olhar que fosse além de ver em algum ponto ou coisa presente na cidade. <br> </div>
+
+				<div style="text-indent: 60px;"> Distribuídas pela professora durante as aulas, a imagens passarão pelas mãos de três diferentes alunos que, modificadas por cada um destes, ao final do projeto, retornarão para o aluno que originou a fotografia. </div>
+				</p>
+			</div>
+
+			<div class="alinharFoto" id="fotodahome">
+				<img src="exemplo.jpg"/>
+				<div style="font-size: 14px; font-style: italic; color: #414141;">
+					<font color="red">*</font> (Foto exemplificando o final do projeto).
+				</div>
+			</div>
+
+		</div>
+	</body>
+</html>
