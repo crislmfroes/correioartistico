@@ -75,6 +75,16 @@
 		)")){
 			echo "Estudante cadastrade com sucesso!";
 		}
+		if(mysql_query($connect, "INSERT INTO '$cartas_table' VALUES(
+			'$matricula',
+			'$nome',
+			'$turma',
+			'$cep',
+			'$carta',
+			'$endereco'
+		)")){
+			echo "Carta cadastrada com sucesso!";
+		}
 	}
 
 	function sorteia_estudante(){
