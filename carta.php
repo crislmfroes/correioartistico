@@ -230,13 +230,22 @@
 			var par = ""; // resultado da carta
 
 			function revel_match(){
-				var cartas = JSON.parse(
+				var matches = JSON.parse(
 					<?php
+					$matches = array();
 					$data_estd = 'u343668054_kmkz';
-					$connect = mysql_connect('mysql.hostinger.com.br', 'u343668054_kmkz', 'c11bb875ddef1f7');
-					mysql_select_db($data_estd, $connect);
-					$cartas = mysql_query("SELECT numero, estudantes FROM cartas");
-					echo $cartas;
+					$connect = mysqli_connect('mysql.hostinger.com.br', 'u343668054_kmkz', 'c11bb875ddef1f7');
+					mysqli_select_db($data_estd, $connect);
+					$cartas = mysqli_query("SELECT numero, estudantes FROM cartas");
+					if($cartas){
+						$cartas = mysqli_fetch_all($cartas);
+						foreach ($cartas as $carta) {
+							$estudantes = unserialize($carta["estudante"]);
+							$length = count($estudantes);
+							array_push($matches, array($estudantes[length - 2], $estudantes[length - 1]));
+						}
+					}
+					echo json_encode($matches);
 					?>
 				);
 			}
