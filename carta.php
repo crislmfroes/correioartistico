@@ -150,7 +150,7 @@
 				<nav id="menu" style="display: none;" onmouseover="mostra()" onmouseout="oculta()">
 					<ul>
 						<li><a href="index.html"> HOME </a></li>
-						<li><a href="carta.html"> CARTA </a></li>
+						<li><a href="carta.php"> CARTA </a></li>
 					</ul>
 				</nav>
 			</header>

@@ -1,52 +1,32 @@
 <?php
 $connect = mysqli_connect('mysql.hostinger.com.br', 'u343668054_kmkz', 'c11bb875ddef1f7');
 mysqli_select_db('u343668054_kmkz', $connect);
-
-class Estudante {
-  $this->__cartas = [];
-  $this->__ocup = false;
-  function __construct($matricula, $carta){
-    $this->__matricula = $matricula;
-    array_push($carta, $this->__cartas);
-  }
-  function get_matricula(){
-    return $this->__matricula;
-  }
-  function get_cartas(){
-    return $this->__cartas;
-  }
-  function adiciona_carta($carta){
-    if(!in_array($carta, $this->__cartas) &&(!$this->__ocup)){
-      array_push($carta, $this->__cartas);
-    }
-  }
-  function envia_carta($outro){
-    if($outro->esta_disponivel()){
-      $this->__ocup = false;
-      $outro->adiciona_carta(end($this->__cartas));
-    }
-  }
-  function esta_disponivel(){
-    return !$this->__ocup;
-  }
+$db_estudantes = mysqli_query($connect, "SELECT matricula, cartas, esta_disponivel, turma FROM estudantes");
+$db_cartas = mysqli_query($connect, "SELECT numero, estudantes, data_entrega FROM cartas");
+if ($db_cartas) {
+	$db_cartas = mysqli_fetch_all($db_cartas);
 }
-
-class Carta {
-  $this->__estudantes = [];
-  function __construct($numero){
-    $this->__numero = $numero;
-  }
-  function get_numero(){
-    return $this->__numero;
-  }
-  function adiciona_estudante($estudante){
-    if(!in_array($estudante, $this->__estudantes)){
-      array_push($estudante, $this->__estudantes);
-    }
-  }
-  function get_estudantes(){
-    return $this->__estudantes;
-  }
+if ($db_estudantes) {
+	$db_estudantes = mysqli_fetch_all($db_estudantes);
 }
-
+$matriculas_2c = array();
+$matriculas_2d = array();
+foreach ($db_estudantes as $estudante) {
+	if($estudante["turma"] == "2C"){
+		array_push($matriculas_2c, $estudante["matricula"]);
+	} else {
+		array_push($matriculas_2d, $estudante["matricula"]);
+	}
+}
+foreach ($db_cartas as $carta) {
+	if ($carta["data_entrega"] == date("Y/m/d")) {
+		$estudantes_indisp = unserialize($carta["estudantes"]);
+		foreach ($db_estudantes as $estudante) {
+			if (!$estudante["esta_disponivel"]) {
+				array_push($estudantes_indisp, $estudante["matricula"]);
+			}
+		}
+		$nova_matricula = array_rand(array_diff($matriculas, $estudantes_indisp));
+	}
+}
 ?>
